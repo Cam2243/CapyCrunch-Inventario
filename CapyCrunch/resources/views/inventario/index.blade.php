@@ -36,7 +36,6 @@
                 radial-gradient(ellipse 50% 30% at 90% 100%, rgba(200,129,58,0.06) 0%, transparent 60%);
         }
 
-        /* ── TOPBAR ── */
         .topbar {
             background: var(--brown);
             color: var(--warm);
@@ -97,14 +96,12 @@
 
         .btn-cierre:hover { background: var(--caramel2); }
 
-        /* ── MAIN ── */
         main {
             max-width: 1100px;
             margin: 0 auto;
             padding: 2rem 1.5rem 4rem;
         }
 
-        /* ── ALERT ── */
         .alert {
             border-radius: 10px;
             padding: 0.85rem 1.2rem;
@@ -122,7 +119,6 @@
         .alert-success { background: #eaf7f0; border: 1px solid #a7d7bc; color: var(--green); }
         .alert-error   { background: #fef0ec; border: 1px solid #f0b9aa; color: var(--red); }
 
-        /* ── SECCIÓN APERTURA ── */
         .apertura-section {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -151,7 +147,6 @@
 
         .section-sub { font-size: 0.8rem; color: var(--text3); margin-top: 0.1rem; }
 
-        /* ── GRILLA DE PRODUCTOS (apertura) ── */
         .apertura-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -201,7 +196,6 @@
         .btn-apertura:hover { background: var(--brown2); }
         .btn-apertura:active { transform: scale(0.98); }
 
-        /* ── LAYOUT DÍA ABIERTO ── */
         .dia-grid {
             display: grid;
             grid-template-columns: 1fr 340px;
@@ -209,7 +203,6 @@
             align-items: start;
         }
 
-        /* ── TARJETAS DE STOCK ── */
         .stock-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -264,7 +257,6 @@
         .sc-vendidas { font-size: 0.7rem; color: var(--green); font-weight: 600; }
         .sc-inicio { color: var(--text3); }
 
-        /* ── PANEL DE VENTA ── */
         .venta-panel {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -344,7 +336,6 @@
         .btn-vender:hover { background: #245a42; }
         .btn-vender:active { transform: scale(0.98); }
 
-        /* ── HISTORIAL ── */
         .historial {
             margin-top: 1.5rem;
             border-top: 1px solid var(--border);
@@ -381,7 +372,6 @@
             color: var(--text3); font-size: 0.8rem;
         }
 
-        /* ── AGREGAR PRODUCTO ── */
         .add-producto-section {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -422,7 +412,6 @@
 
         .btn-add:hover { background: var(--caramel2); }
 
-        /* ── STATS TOP ── */
         .stats-row {
             display: grid; grid-template-columns: repeat(3, 1fr);
             gap: 1rem; margin-bottom: 1.5rem;
@@ -444,7 +433,6 @@
         .stat-value.green { color: var(--green); }
         .stat-sub { font-size: 0.72rem; color: var(--text3); margin-top: 0.2rem; }
 
-        /* ── RESPONSIVE ── */
         @media (max-width: 750px) {
             .dia-grid { grid-template-columns: 1fr; }
             .add-grid { grid-template-columns: 1fr 1fr; }
@@ -478,7 +466,6 @@
 
 <main>
 
-    {{-- ALERTAS --}}
     @if(session('success'))
         <div class="alert alert-success">✅ {{ session('success') }}</div>
     @endif
@@ -486,12 +473,8 @@
         <div class="alert alert-error">⚠️ {{ session('error') }}</div>
     @endif
 
-    {{-- ═══════════════════════════════════════ --}}
-    {{-- ESTADO: DÍA NO ABIERTO                 --}}
-    {{-- ═══════════════════════════════════════ --}}
     @if(!$diaAbierto)
 
-        {{-- Agregar nuevo producto al catálogo --}}
         <div class="add-producto-section">
             <div class="section-header" style="margin-bottom:1rem;">
                 <div class="section-icon">➕</div>
@@ -536,7 +519,6 @@
             </form>
         </div>
 
-        {{-- Apertura del día --}}
         <div class="apertura-section">
             <div class="section-header">
                 <div class="section-icon">🌅</div>
@@ -562,9 +544,6 @@
             </form>
         </div>
 
-    {{-- ═══════════════════════════════════════ --}}
-    {{-- ESTADO: DÍA ABIERTO                    --}}
-    {{-- ═══════════════════════════════════════ --}}
     @else
 
         {{-- Estadísticas rápidas --}}
@@ -597,7 +576,6 @@
 
         <div class="dia-grid">
 
-            {{-- Izquierda: stock de productos --}}
             <div>
                 <div class="stock-grid">
                     @foreach($catalogo as $p)
@@ -626,7 +604,6 @@
                     @endforeach
                 </div>
 
-                {{-- Agregar producto durante el día --}}
                 <div class="add-producto-section">
                     <div class="section-header" style="margin-bottom:1rem;">
                         <div class="section-icon">➕</div>
@@ -672,7 +649,6 @@
                 </div>
             </div>
 
-            {{-- Derecha: panel de venta --}}
             <div class="venta-panel">
                 <div class="vp-title">🛒 Registrar Venta</div>
 
@@ -698,7 +674,6 @@
                     </button>
                 </form>
 
-                {{-- Historial del día --}}
                 <div class="historial">
                     <div class="historial-title">Historial del día</div>
                     @if(count($historial) > 0)

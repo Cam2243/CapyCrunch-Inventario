@@ -64,7 +64,6 @@
             padding: 2.5rem 1.5rem 4rem;
         }
 
-        /* ── ENCABEZADO CIERRE ── */
         .cierre-header {
             text-align: center; margin-bottom: 2.5rem;
             animation: fadeUp 0.5s ease;
@@ -90,7 +89,6 @@
 
         .cierre-meta span { display: flex; align-items: center; gap: 0.3rem; }
 
-        /* ── RESUMEN GRANDE ── */
         .resumen-top {
             display: grid; grid-template-columns: repeat(3, 1fr);
             gap: 1rem; margin-bottom: 2rem;
@@ -126,7 +124,6 @@
         .r-card .r-sub { font-size: 0.72rem; color: var(--text3); margin-top: 0.3rem; }
         .r-card.highlight .r-sub { color: rgba(245,230,204,0.5); }
 
-        /* ── TABLA DETALLE ── */
         .detalle-section {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -188,7 +185,6 @@
             background: linear-gradient(to right, var(--caramel), var(--caramel2));
         }
 
-        /* ── HISTORIAL ── */
         .historial-section {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -220,7 +216,6 @@
 
         .hist-empty { text-align: center; color: var(--text3); font-size: 0.82rem; padding: 1rem; }
 
-        /* ── ACCIONES ── */
         .acciones {
             display: flex; gap: 1rem; justify-content: center;
             animation: fadeUp 0.5s ease 0.4s both;
@@ -251,6 +246,13 @@
             .topbar .btn-back, .acciones { display: none; }
             body { background: white; }
         }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; }
+            .bg-stone-900, .bg-stone-800 { background: white !important; color: black !important; }
+            * { color: black !important; }
+        }
     </style>
 </head>
 <body>
@@ -277,7 +279,6 @@
         </div>
     </div>
 
-    {{-- Resumen top --}}
     @php
         $totalVendidas  = array_sum(array_column($resumen, 'vendidas'));
         $totalSobrante  = array_sum(array_column($resumen, 'sobrante'));
@@ -303,7 +304,6 @@
         </div>
     </div>
 
-    {{-- Tabla detalle por producto --}}
     <div class="detalle-section">
         <div class="detalle-header">
             <div>Producto</div>
@@ -342,7 +342,6 @@
         @endforeach
     </div>
 
-    {{-- Historial de transacciones --}}
     @if(count($historial) > 0)
     <div class="historial-section">
         <div class="hist-title">📋 Historial de transacciones ({{ count($historial) }})</div>
@@ -363,14 +362,20 @@
     </div>
     @endif
 
-    {{-- Acciones --}}
     <div class="acciones">
         <form method="POST" action="{{ route('reiniciar') }}">
             @csrf
             <button type="submit" class="btn-nuevo-dia">🌅 Iniciar Nuevo Día</button>
-        </form>
+            <button type="submit" class="btn-nuevo-dia"onclick="window.print()" >🖨️ Imprimir Comprobante </button>
+            <button type="submit" class="btn-nuevo-dia" onclick="descargarPDF()">💾 Guardar como PDF </button>
     </div>
-
+        </form>
+        
+    <script>
+    function descargarPDF() {
+        window.print();
+    }
+    </script>
 </main>
 
 </body>

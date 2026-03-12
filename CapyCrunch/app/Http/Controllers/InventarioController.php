@@ -7,10 +7,6 @@ use Carbon\Carbon;
 
 class InventarioController extends Controller
 {
-    // ─────────────────────────────────────────
-    // CATÁLOGO BASE de productos Capycrunch
-    // Se puede ampliar desde la UI
-    // ─────────────────────────────────────────
     private function catalogoBase(): array
     {
         return [
@@ -22,12 +18,8 @@ class InventarioController extends Controller
         ];
     }
 
-    // ─────────────────────────────────────────
-    // INDEX — pantalla principal
-    // ─────────────────────────────────────────
     public function index()
     {
-        // Si no hay catálogo en sesión, cargar el base
         if (!session()->has('catalogo')) {
             session(['catalogo' => $this->catalogoBase()]);
         }
@@ -46,9 +38,6 @@ class InventarioController extends Controller
         ));
     }
 
-    // ─────────────────────────────────────────
-    // APERTURA DEL DÍA
-    // ─────────────────────────────────────────
     public function apertura(Request $request)
     {
         $catalogo = session('catalogo', []);
@@ -72,9 +61,6 @@ class InventarioController extends Controller
         return redirect()->route('inicio')->with('success', '¡Día abierto! Stock registrado correctamente.');
     }
 
-    // ─────────────────────────────────────────
-    // AGREGAR NUEVO PRODUCTO AL CATÁLOGO
-    // ─────────────────────────────────────────
     public function agregarProducto(Request $request)
     {
         $request->validate([
@@ -85,7 +71,6 @@ class InventarioController extends Controller
 
         $catalogo = session('catalogo', []);
 
-        // Generar ID único
         $id = 'prod_' . uniqid();
 
         $catalogo[] = [
@@ -97,7 +82,6 @@ class InventarioController extends Controller
 
         session(['catalogo' => $catalogo]);
 
-        // Si el día ya está abierto, inicializar el nuevo producto
         if (session('dia_abierto')) {
             $inventario = session('inventario', []);
             $ventas     = session('ventas', []);
@@ -113,9 +97,6 @@ class InventarioController extends Controller
         return redirect()->route('inicio')->with('success', 'Producto "' . $request->nombre . '" agregado al catálogo.');
     }
 
-    // ─────────────────────────────────────────
-    // REGISTRAR VENTA EN TIEMPO REAL
-    // ─────────────────────────────────────────
     public function registrarVenta(Request $request)
     {
         $request->validate([
@@ -131,7 +112,6 @@ class InventarioController extends Controller
         $historial  = session('historial', []);
         $catalogo   = session('catalogo', []);
 
-        // Buscar el producto
         $producto = collect($catalogo)->firstWhere('id', $id);
 
         if (!$producto) {
@@ -144,11 +124,9 @@ class InventarioController extends Controller
             return redirect()->route('inicio')->with('error', "No hay suficiente stock de {$producto['nombre']}. Stock actual: {$stockActual}");
         }
 
-        // Descontar inventario
         $inventario[$id] = $stockActual - $cantidad;
         $ventas[$id]     = ($ventas[$id] ?? 0) + $cantidad;
 
-        // Guardar en historial
         $historial[] = [
             'hora'     => Carbon::now()->format('H:i:s'),
             'producto' => $producto['nombre'],
@@ -162,9 +140,6 @@ class InventarioController extends Controller
         return redirect()->route('inicio')->with('success', "✓ Venta registrada: {$cantidad} × {$producto['nombre']}");
     }
 
-    // ─────────────────────────────────────────
-    // CIERRE DE CAJA
-    // ─────────────────────────────────────────
     public function cierre()
     {
         $catalogo   = session('catalogo', []);
@@ -175,7 +150,6 @@ class InventarioController extends Controller
         $fecha      = session('fecha_apertura', Carbon::now()->format('d/m/Y'));
         $horaAp     = session('hora_apertura', '--:--');
 
-        // Construir resumen por producto
         $resumen = [];
         $totalDinero = 0;
 
@@ -206,9 +180,6 @@ class InventarioController extends Controller
         ));
     }
 
-    // ─────────────────────────────────────────
-    // REINICIAR — nueva apertura
-    // ─────────────────────────────────────────
     public function reiniciar()
     {
         // Conservar el catálogo pero limpiar el día
