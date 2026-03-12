@@ -14,3 +14,7 @@ Route::post('/venta', [InventarioController::class, 'registrarVenta'])->name('ve
 Route::get('/cierre', [InventarioController::class, 'cierre'])->name('cierre');
 
 Route::post('/reiniciar', [InventarioController::class, 'reiniciar'])->name('reiniciar');
+
+Route::post('/producto/editar', [InventarioController::class, 'editarProducto'])->name('producto.editar');
+
+Route::post('/producto/eliminar', [InventarioController::class, 'eliminarProducto'])->name('producto.eliminar');

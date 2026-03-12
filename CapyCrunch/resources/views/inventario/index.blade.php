@@ -13,6 +13,7 @@
             --caramel2: #e8a55a;
             --brown:    #4a2c0a;
             --brown2:   #6b3f12;
+            --brown3:   #2C1810;
             --text:     #2d1a06;
             --text2:    #7a5230;
             --text3:    #b8906a;
@@ -46,42 +47,27 @@
             position: sticky; top: 0; z-index: 100;
             box-shadow: 0 2px 20px rgba(74,44,10,0.25);
         }
-
-        .brand {
-            display: flex; align-items: center; gap: 0.75rem;
-        }
-
-        .brand-icon {
-            font-size: 1.6rem; line-height: 1;
-        }
-
+        .brand { display: flex; align-items: center; gap: 0.75rem; }
+        .brand-icon { font-size: 1.6rem; line-height: 1; }
         .brand-text { display: flex; flex-direction: column; }
-
         .brand-name {
             font-family: 'Fraunces', serif;
             font-size: 1.1rem; font-weight: 700;
             color: var(--caramel2); line-height: 1;
         }
-
         .brand-sub {
             font-size: 0.65rem; font-weight: 500;
             color: rgba(245,230,204,0.6);
             letter-spacing: 0.08em; text-transform: uppercase;
         }
-
-        .topbar-right {
-            display: flex; align-items: center; gap: 1rem;
-        }
-
+        .topbar-right { display: flex; align-items: center; gap: 1rem; }
         .fecha-badge {
             background: rgba(255,255,255,0.08);
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 999px;
             padding: 0.3rem 0.85rem;
-            font-size: 0.75rem; color: var(--warm);
-            font-weight: 500;
+            font-size: 0.75rem; color: var(--warm); font-weight: 500;
         }
-
         .btn-cierre {
             background: var(--caramel);
             color: #fff;
@@ -93,7 +79,6 @@
             text-decoration: none;
             display: inline-flex; align-items: center; gap: 0.4rem;
         }
-
         .btn-cierre:hover { background: var(--caramel2); }
 
         main {
@@ -110,12 +95,10 @@
             display: flex; align-items: center; gap: 0.6rem;
             animation: slideDown 0.3s ease;
         }
-
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-8px); }
             to   { opacity: 1; transform: translateY(0); }
         }
-
         .alert-success { background: #eaf7f0; border: 1px solid #a7d7bc; color: var(--green); }
         .alert-error   { background: #fef0ec; border: 1px solid #f0b9aa; color: var(--red); }
 
@@ -126,12 +109,10 @@
             padding: 2rem;
             margin-bottom: 2rem;
         }
-
         .section-header {
             display: flex; align-items: center; gap: 0.75rem;
             margin-bottom: 1.5rem;
         }
-
         .section-icon {
             width: 40px; height: 40px;
             background: var(--warm);
@@ -139,12 +120,10 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 1.1rem;
         }
-
         .section-title {
             font-family: 'Fraunces', serif;
             font-size: 1.2rem; font-weight: 600; color: var(--brown);
         }
-
         .section-sub { font-size: 0.8rem; color: var(--text3); margin-top: 0.1rem; }
 
         .apertura-grid {
@@ -153,7 +132,6 @@
             gap: 1rem;
             margin-bottom: 1.5rem;
         }
-
         .apertura-item {
             background: var(--cream);
             border: 1px solid var(--border);
@@ -161,11 +139,9 @@
             padding: 1rem;
             text-align: center;
         }
-
         .apertura-item .emoji { font-size: 1.8rem; margin-bottom: 0.4rem; display: block; }
         .apertura-item .nombre { font-size: 0.78rem; font-weight: 600; color: var(--text); margin-bottom: 0.6rem; }
         .apertura-item .precio-hint { font-size: 0.7rem; color: var(--text3); margin-bottom: 0.6rem; }
-
         .apertura-item input[type="number"] {
             width: 100%;
             background: #fff;
@@ -178,10 +154,7 @@
             text-align: center;
             transition: border-color 0.2s;
         }
-
-        .apertura-item input:focus {
-            outline: none; border-color: var(--caramel);
-        }
+        .apertura-item input:focus { outline: none; border-color: var(--caramel); }
 
         .btn-apertura {
             background: var(--brown);
@@ -192,9 +165,28 @@
             padding: 0.8rem 2rem; cursor: pointer;
             transition: background 0.2s, transform 0.1s;
         }
-
         .btn-apertura:hover { background: var(--brown2); }
         .btn-apertura:active { transform: scale(0.98); }
+
+        .card-actions {
+            display: flex;
+            gap: 0.4rem;
+            margin-top: 0.6rem;
+            justify-content: center;
+        }
+        .btn-edit, .btn-delete {
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.3rem 0.65rem;
+            border-radius: 0.6rem;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.15s;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .btn-edit   { background: #f0e6d3; color: #5a3e2b; }
+        .btn-delete { background: #fde8e8; color: #8b2020; }
+        .btn-edit:hover, .btn-delete:hover { opacity: 0.75; }
 
         .dia-grid {
             display: grid;
@@ -209,7 +201,6 @@
             gap: 1rem;
             margin-bottom: 1.5rem;
         }
-
         .stock-card {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -218,41 +209,19 @@
             position: relative;
             transition: box-shadow 0.2s;
         }
-
         .stock-card:hover { box-shadow: 0 4px 20px rgba(74,44,10,0.1); }
-
         .stock-card .sc-emoji { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
-        .stock-card .sc-nombre {
-            font-size: 0.82rem; font-weight: 600; color: var(--text);
-            margin-bottom: 0.3rem; line-height: 1.3;
-        }
+        .stock-card .sc-nombre { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 0.3rem; line-height: 1.3; }
         .stock-card .sc-precio { font-size: 0.72rem; color: var(--text3); margin-bottom: 0.75rem; }
-
-        .stock-bar-wrap {
-            background: var(--warm);
-            border-radius: 999px; height: 6px;
-            overflow: hidden; margin-bottom: 0.6rem;
-        }
-
+        .stock-bar-wrap { background: var(--warm); border-radius: 999px; height: 6px; overflow: hidden; margin-bottom: 0.6rem; }
         .stock-bar {
-            height: 100%;
-            border-radius: 999px;
+            height: 100%; border-radius: 999px;
             background: linear-gradient(to right, var(--caramel), var(--caramel2));
             transition: width 0.4s ease;
         }
-
         .stock-bar.low { background: linear-gradient(to right, var(--red), var(--red-lt)); }
-
-        .sc-nums {
-            display: flex; justify-content: space-between;
-            font-size: 0.7rem;
-        }
-
-        .sc-actual {
-            font-size: 1.4rem; font-weight: 700;
-            color: var(--brown); font-family: 'Fraunces', serif;
-        }
-
+        .sc-nums { display: flex; justify-content: space-between; font-size: 0.7rem; }
+        .sc-actual { font-size: 1.4rem; font-weight: 700; color: var(--brown); font-family: 'Fraunces', serif; }
         .sc-actual.low { color: var(--red); }
         .sc-vendidas { font-size: 0.7rem; color: var(--green); font-weight: 600; }
         .sc-inicio { color: var(--text3); }
@@ -264,7 +233,6 @@
             padding: 1.5rem;
             position: sticky; top: 70px;
         }
-
         .vp-title {
             font-family: 'Fraunces', serif;
             font-size: 1.1rem; font-weight: 600; color: var(--brown);
@@ -273,7 +241,6 @@
             border-bottom: 1px solid var(--border);
             display: flex; align-items: center; gap: 0.5rem;
         }
-
         .vp-select {
             width: 100%;
             background: var(--cream);
@@ -288,14 +255,8 @@
             -webkit-appearance: none;
             cursor: pointer;
         }
-
         .vp-select:focus { outline: none; border-color: var(--caramel); }
-
-        .vp-cant-wrap {
-            display: flex; gap: 0.5rem; margin-bottom: 1rem;
-            align-items: center;
-        }
-
+        .vp-cant-wrap { display: flex; gap: 0.5rem; margin-bottom: 1rem; align-items: center; }
         .vp-cant-btn {
             width: 38px; height: 38px;
             background: var(--warm);
@@ -305,9 +266,7 @@
             display: flex; align-items: center; justify-content: center;
             transition: background 0.15s;
         }
-
         .vp-cant-btn:hover { background: var(--border); }
-
         .vp-cant-input {
             flex: 1;
             background: var(--cream);
@@ -316,12 +275,9 @@
             color: var(--text);
             font-family: 'Fraunces', serif;
             font-size: 1.3rem; font-weight: 700;
-            padding: 0.4rem; text-align: center;
-            width: 100%;
+            padding: 0.4rem; text-align: center; width: 100%;
         }
-
         .vp-cant-input:focus { outline: none; border-color: var(--caramel); }
-
         .btn-vender {
             width: 100%;
             background: var(--green);
@@ -332,45 +288,28 @@
             transition: background 0.2s, transform 0.1s;
             display: flex; align-items: center; justify-content: center; gap: 0.5rem;
         }
-
         .btn-vender:hover { background: #245a42; }
         .btn-vender:active { transform: scale(0.98); }
 
-        .historial {
-            margin-top: 1.5rem;
-            border-top: 1px solid var(--border);
-            padding-top: 1rem;
-        }
-
+        .historial { margin-top: 1.5rem; border-top: 1px solid var(--border); padding-top: 1rem; }
         .historial-title {
             font-size: 0.7rem; font-weight: 600;
             letter-spacing: 0.1em; text-transform: uppercase;
             color: var(--text3); margin-bottom: 0.75rem;
         }
-
-        .historial-list {
-            display: flex; flex-direction: column; gap: 0.4rem;
-            max-height: 220px; overflow-y: auto;
-        }
-
+        .historial-list { display: flex; flex-direction: column; gap: 0.4rem; max-height: 220px; overflow-y: auto; }
         .historial-list::-webkit-scrollbar { width: 4px; }
         .historial-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-
         .h-item {
             display: flex; align-items: center; gap: 0.5rem;
             background: var(--cream);
             border-radius: 8px; padding: 0.45rem 0.7rem;
             font-size: 0.78rem;
         }
-
         .h-hora { color: var(--text3); font-size: 0.68rem; min-width: 50px; }
         .h-desc { flex: 1; color: var(--text); font-weight: 500; }
         .h-monto { color: var(--green); font-weight: 700; }
-
-        .historial-empty {
-            text-align: center; padding: 1rem;
-            color: var(--text3); font-size: 0.8rem;
-        }
+        .historial-empty { text-align: center; padding: 1rem; color: var(--text3); font-size: 0.8rem; }
 
         .add-producto-section {
             background: var(--surface);
@@ -378,16 +317,9 @@
             border-radius: 16px; padding: 1.5rem;
             margin-bottom: 1.5rem;
         }
-
-        .add-grid {
-            display: grid; grid-template-columns: 2fr 1fr 0.6fr auto;
-            gap: 0.75rem; align-items: end;
-        }
-
+        .add-grid { display: grid; grid-template-columns: 2fr 1fr 0.6fr auto; gap: 0.75rem; align-items: end; }
         .add-group { display: flex; flex-direction: column; gap: 0.4rem; }
-
         .add-label { font-size: 0.72rem; font-weight: 600; color: var(--text3); letter-spacing: 0.05em; text-transform: uppercase; }
-
         .add-input {
             background: var(--cream);
             border: 1px solid var(--border);
@@ -397,9 +329,7 @@
             font-size: 0.9rem; padding: 0.6rem 0.85rem;
             transition: border-color 0.2s; width: 100%;
         }
-
         .add-input:focus { outline: none; border-color: var(--caramel); }
-
         .btn-add {
             background: var(--caramel);
             color: #fff; border: none; border-radius: 9px;
@@ -409,29 +339,77 @@
             white-space: nowrap;
             transition: background 0.2s;
         }
-
         .btn-add:hover { background: var(--caramel2); }
 
-        .stats-row {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 1rem; margin-bottom: 1.5rem;
-        }
-
-        .stat-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px; padding: 1rem 1.25rem;
-        }
-
+        .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+        .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; }
         .stat-label { font-size: 0.7rem; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.3rem; }
-
-        .stat-value {
-            font-family: 'Fraunces', serif;
-            font-size: 1.6rem; font-weight: 600; color: var(--brown); line-height: 1;
-        }
-
+        .stat-value { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 600; color: var(--brown); line-height: 1; }
         .stat-value.green { color: var(--green); }
         .stat-sub { font-size: 0.72rem; color: var(--text3); margin-top: 0.2rem; }
+
+        .modal-overlay {
+            display: none;
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-box {
+            background: #fff8f0;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            width: 90%; max-width: 420px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+        .modal-title {
+            font-family: 'Fraunces', serif;
+            color: var(--brown3);
+            margin: 0 0 1.5rem;
+            font-size: 1.4rem;
+        }
+        .modal-field { margin-bottom: 1rem; }
+        .modal-label {
+            font-size: 0.8rem; font-weight: 600; color: #5a3e2b;
+            display: block; margin-bottom: 0.4rem;
+        }
+        .modal-input {
+            width: 100%; padding: 0.6rem;
+            border-radius: 0.75rem;
+            border: 1.5px solid #d4a96a;
+            background: #fffdf7;
+            font-size: 0.95rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .modal-select {
+            width: 100%; padding: 0.6rem;
+            border-radius: 0.75rem;
+            border: 1.5px solid #d4a96a;
+            background: #fffdf7;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        .modal-input:focus, .modal-select:focus { outline: none; border-color: var(--caramel); }
+        .modal-actions { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+        .btn-modal-cancel {
+            flex: 1; padding: 0.75rem;
+            border-radius: 1rem;
+            border: 2px solid #d4a96a;
+            background: transparent;
+            color: #5a3e2b; font-weight: 600; cursor: pointer;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .btn-modal-save {
+            flex: 1; padding: 0.75rem;
+            border-radius: 1rem; border: none;
+            background: var(--brown3);
+            color: #F5ECD7; font-weight: 600; cursor: pointer;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .btn-modal-cancel:hover { background: #f0e6d3; }
+        .btn-modal-save:hover { background: var(--brown2); }
 
         @media (max-width: 750px) {
             .dia-grid { grid-template-columns: 1fr; }
@@ -439,7 +417,6 @@
             .stats-row { grid-template-columns: 1fr 1fr; }
             .venta-panel { position: static; }
         }
-
         @media (max-width: 480px) {
             .topbar { padding: 0.75rem 1rem; }
             .stats-row { grid-template-columns: 1fr; }
@@ -463,6 +440,53 @@
         @endif
     </div>
 </div>
+
+<div id="modal-editar" class="modal-overlay">
+    <div class="modal-box">
+        <h3 class="modal-title">✏️ Editar Producto</h3>
+        <form method="POST" action="{{ route('producto.editar') }}">
+            @csrf
+            <input type="hidden" name="id" id="edit-id">
+            <div class="modal-field">
+                <label class="modal-label">Emoji</label>
+                <select name="emoji" id="edit-emoji" class="modal-select">
+                    <option value="🍪">🍪 Galleta</option>
+                    <option value="🍫">🍫 Chocolate</option>
+                    <option value="🌰">🌰 Canela</option>
+                    <option value="🍋">🍋 Limón</option>
+                    <option value="🌾">🌾 Avena</option>
+                    <option value="🥥">🥥 Coco</option>
+                    <option value="🍓">🍓 Fresa</option>
+                    <option value="🫐">🫐 Arándano</option>
+                    <option value="🍑">🍑 Durazno</option>
+                    <option value="🥜">🥜 Maní</option>
+                    <option value="🍯">🍯 Miel</option>
+                    <option value="🎂">🎂 Vainilla</option>
+                    <option value="🧁">🧁 Cupcake</option>
+                    <option value="🍩">🍩 Dona</option>
+                    <option value="🐾">🐾 Capy</option>
+                </select>
+            </div>
+            <div class="modal-field">
+                <label class="modal-label">Nombre</label>
+                <input type="text" name="nombre" id="edit-nombre" required class="modal-input">
+            </div>
+            <div class="modal-field">
+                <label class="modal-label">Precio (COP)</label>
+                <input type="number" name="precio" id="edit-precio" min="1" required class="modal-input">
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-modal-cancel" onclick="cerrarEditar()">Cancelar</button>
+                <button type="submit" class="btn-modal-save">💾 Guardar Cambios</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<form id="form-eliminar" method="POST" action="{{ route('producto.eliminar') }}" style="display:none;">
+    @csrf
+    <input type="hidden" name="id" id="eliminar-id">
+</form>
 
 <main>
 
@@ -496,23 +520,23 @@
                     </div>
                     <div class="add-group">
                         <label class="add-label">Emoji</label>
-                        <select class="add-input" name="emoji" cursor:pointer">
-                                        <option value="🍪">🍪 Galleta clásica</option>
-                                        <option value="🍫">🍫 Chocolate</option>
-                                        <option value="🌰">🌰 Canela</option>
-                                        <option value="🍋">🍋 Limón</option>
-                                        <option value="🌾">🌾 Avena</option>
-                                        <option value="🥥">🥥 Coco</option>
-                                        <option value="🍓">🍓 Fresa</option>
-                                        <option value="🫐">🫐 Arándano</option>
-                                        <option value="🍑">🍑 Durazno</option>
-                                        <option value="🥜">🥜 Maní</option>
-                                        <option value="🍯">🍯 Miel</option>
-                                        <option value="🎂">🎂 Torta</option>
-                                        <option value="🧁">🧁 Cupcake</option>
-                                        <option value="🍩">🍩 Donut</option>
-                                        <option value="🐾">🐾 Capybara</option>
-                                    </select>
+                        <select class="add-input" name="emoji" style="cursor:pointer">
+                            <option value="🍪">🍪 Galleta clásica</option>
+                            <option value="🍫">🍫 Chocolate</option>
+                            <option value="🌰">🌰 Canela</option>
+                            <option value="🍋">🍋 Limón</option>
+                            <option value="🌾">🌾 Avena</option>
+                            <option value="🥥">🥥 Coco</option>
+                            <option value="🍓">🍓 Fresa</option>
+                            <option value="🫐">🫐 Arándano</option>
+                            <option value="🍑">🍑 Durazno</option>
+                            <option value="🥜">🥜 Maní</option>
+                            <option value="🍯">🍯 Miel</option>
+                            <option value="🎂">🎂 Torta</option>
+                            <option value="🧁">🧁 Cupcake</option>
+                            <option value="🍩">🍩 Donut</option>
+                            <option value="🐾">🐾 Capybara</option>
+                        </select>
                     </div>
                     <button type="submit" class="btn-add">+ Agregar</button>
                 </div>
@@ -527,7 +551,6 @@
                     <div class="section-sub">Ingresa cuántas unidades de cada galleta tienes hoy</div>
                 </div>
             </div>
-
             <form method="POST" action="{{ route('apertura') }}">
                 @csrf
                 <div class="apertura-grid">
@@ -537,6 +560,16 @@
                         <div class="nombre">{{ $p['nombre'] }}</div>
                         <div class="precio-hint">$ {{ number_format($p['precio'], 0, ',', '.') }} c/u</div>
                         <input type="number" name="stock_{{ $p['id'] }}" value="0" min="0" placeholder="0">
+                        <div class="card-actions">
+                            <button type="button" class="btn-edit"
+                                onclick="abrirEditar('{{ $p['id'] }}','{{ addslashes($p['nombre']) }}','{{ $p['precio'] }}','{{ $p['emoji'] }}')">
+                                ✏️ Editar
+                            </button>
+                            <button type="button" class="btn-delete"
+                                onclick="eliminarProducto('{{ $p['id'] }}','{{ addslashes($p['nombre']) }}')">
+                                🗑️ Eliminar
+                            </button>
+                        </div>
                     </div>
                     @endforeach
                 </div>
@@ -546,9 +579,8 @@
 
     @else
 
-        {{-- Estadísticas rápidas --}}
         @php
-            $totalVendidas = array_sum($ventas);
+            $totalVendidas  = array_sum($ventas);
             $totalRecaudado = 0;
             foreach($catalogo as $p) {
                 $totalRecaudado += ($ventas[$p['id']] ?? 0) * $p['precio'];
@@ -600,6 +632,16 @@
                         @if($vendidas > 0)
                         <div class="sc-vendidas">✓ {{ $vendidas }} vendidas</div>
                         @endif
+                        <div class="card-actions">
+                            <button type="button" class="btn-edit"
+                                onclick="abrirEditar('{{ $p['id'] }}','{{ addslashes($p['nombre']) }}','{{ $p['precio'] }}','{{ $p['emoji'] }}')">
+                                ✏️ Editar
+                            </button>
+                            <button type="button" class="btn-delete"
+                                onclick="eliminarProducto('{{ $p['id'] }}','{{ addslashes($p['nombre']) }}')">
+                                🗑️ Eliminar
+                            </button>
+                        </div>
                     </div>
                     @endforeach
                 </div>
@@ -626,22 +668,22 @@
                             <div class="add-group">
                                 <label class="add-label">Emoji</label>
                                 <select class="add-input" name="emoji" style="font-size:1.2rem; cursor:pointer">
-                                        <option value="🍪">🍪 Galleta clásica</option>
-                                        <option value="🍫">🍫 Chocolate</option>
-                                        <option value="🌰">🌰 Canela</option>
-                                        <option value="🍋">🍋 Limón</option>
-                                        <option value="🌾">🌾 Avena</option>
-                                        <option value="🥥">🥥 Coco</option>
-                                        <option value="🍓">🍓 Fresa</option>
-                                        <option value="🫐">🫐 Arándano</option>
-                                        <option value="🍑">🍑 Durazno</option>
-                                        <option value="🥜">🥜 Maní</option>
-                                        <option value="🍯">🍯 Miel</option>
-                                        <option value="🎂">🎂 Torta</option>
-                                        <option value="🧁">🧁 Cupcake</option>
-                                        <option value="🍩">🍩 Donut</option>
-                                        <option value="🐾">🐾 Capybara</option>
-                                    </select>
+                                    <option value="🍪">🍪 Galleta clásica</option>
+                                    <option value="🍫">🍫 Chocolate</option>
+                                    <option value="🌰">🌰 Canela</option>
+                                    <option value="🍋">🍋 Limón</option>
+                                    <option value="🌾">🌾 Avena</option>
+                                    <option value="🥥">🥥 Coco</option>
+                                    <option value="🍓">🍓 Fresa</option>
+                                    <option value="🫐">🫐 Arándano</option>
+                                    <option value="🍑">🍑 Durazno</option>
+                                    <option value="🥜">🥜 Maní</option>
+                                    <option value="🍯">🍯 Miel</option>
+                                    <option value="🎂">🎂 Torta</option>
+                                    <option value="🧁">🧁 Cupcake</option>
+                                    <option value="🍩">🍩 Donut</option>
+                                    <option value="🐾">🐾 Capybara</option>
+                                </select>
                             </div>
                             <button type="submit" class="btn-add">+ Agregar</button>
                         </div>
@@ -651,7 +693,6 @@
 
             <div class="venta-panel">
                 <div class="vp-title">🛒 Registrar Venta</div>
-
                 <form method="POST" action="{{ route('venta.registrar') }}">
                     @csrf
                     <select name="producto_id" class="vp-select" required>
@@ -662,16 +703,12 @@
                         </option>
                         @endforeach
                     </select>
-
                     <div class="vp-cant-wrap">
                         <button type="button" class="vp-cant-btn" onclick="cambiarCant(-1)">−</button>
                         <input type="number" name="cantidad" id="cantInput" class="vp-cant-input" value="1" min="1" required>
                         <button type="button" class="vp-cant-btn" onclick="cambiarCant(1)">+</button>
                     </div>
-
-                    <button type="submit" class="btn-vender">
-                        ✓ Registrar Venta
-                    </button>
+                    <button type="submit" class="btn-vender">✓ Registrar Venta</button>
                 </form>
 
                 <div class="historial">
@@ -703,6 +740,35 @@ function cambiarCant(delta) {
     const input = document.getElementById('cantInput');
     const val = parseInt(input.value) || 1;
     input.value = Math.max(1, val + delta);
+}
+
+function abrirEditar(id, nombre, precio, emoji) {
+    document.getElementById('edit-id').value     = id;
+    document.getElementById('edit-nombre').value = nombre;
+    document.getElementById('edit-precio').value = precio;
+    const sel = document.getElementById('edit-emoji');
+    sel.value = emoji;
+    if (sel.value !== emoji) {
+        const opt = document.createElement('option');
+        opt.value = emoji; opt.text = emoji;
+        sel.appendChild(opt);
+        sel.value = emoji;
+    }
+    document.getElementById('modal-editar').classList.add('active');
+}
+
+function cerrarEditar() {
+    document.getElementById('modal-editar').classList.remove('active');
+}
+
+document.getElementById('modal-editar').addEventListener('click', function(e) {
+    if (e.target === this) cerrarEditar();
+});
+
+function eliminarProducto(id, nombre) {
+    if (!confirm('¿Eliminar ' + nombre + ' del catálogo?')) return;
+    document.getElementById('eliminar-id').value = id;
+    document.getElementById('form-eliminar').submit();
 }
 </script>
 

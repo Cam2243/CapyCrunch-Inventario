@@ -25,10 +25,10 @@ class InventarioController extends Controller
         }
 
         $catalogo    = session('catalogo', []);
-        $apertura    = session('apertura', []);      // ['id' => cantidad_inicial]
-        $inventario  = session('inventario', []);    // ['id' => stock_actual]
-        $ventas      = session('ventas', []);        // ['id' => unidades_vendidas]
-        $historial   = session('historial', []);     // array de transacciones
+        $apertura    = session('apertura', []);      
+        $inventario  = session('inventario', []);    
+        $ventas      = session('ventas', []);        
+        $historial   = session('historial', []);     
         $diaAbierto  = session('dia_abierto', false);
         $fecha       = session('fecha_apertura', Carbon::now()->format('d/m/Y'));
 
@@ -182,11 +182,56 @@ class InventarioController extends Controller
 
     public function reiniciar()
     {
-        // Conservar el catálogo pero limpiar el día
         $catalogo = session('catalogo');
         session()->flush();
         session(['catalogo' => $catalogo]);
 
         return redirect()->route('inicio')->with('success', 'Día reiniciado. Listo para una nueva apertura.');
     }
+    public function editarProducto(Request $request)
+{
+    $request->validate([
+        'id'     => 'required|string',
+        'nombre' => 'required|string|max:60',
+        'precio' => 'required|numeric|min:1',
+        'emoji'  => 'nullable|string|max:4',
+    ]);
+
+    $catalogo = session('catalogo', []);
+
+    foreach ($catalogo as &$producto) {
+        if ($producto['id'] === $request->id) {
+            $producto['nombre'] = $request->nombre;
+            $producto['precio'] = (float) $request->precio;
+            $producto['emoji']  = $request->emoji ?: $producto['emoji'];
+            break;
+        }
+    }
+
+    session(['catalogo' => $catalogo]);
+
+    return redirect()->route('inicio')->with('success', 'Producto actualizado correctamente.');
+}
+
+public function eliminarProducto(Request $request)
+{
+    $request->validate(['id' => 'required|string']);
+
+    $id       = $request->id;
+    $catalogo = session('catalogo', []);
+
+    $catalogo = array_values(array_filter($catalogo, fn($p) => $p['id'] !== $id));
+
+    session(['catalogo' => $catalogo]);
+
+    if (session('dia_abierto')) {
+        foreach (['inventario', 'ventas', 'apertura'] as $clave) {
+            $arr = session($clave, []);
+            unset($arr[$id]);
+            session([$clave => $arr]);
+        }
+    }
+
+    return redirect()->route('inicio')->with('success', 'Producto eliminado del catálogo.');
+}
 }
